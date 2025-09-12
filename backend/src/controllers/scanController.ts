@@ -11,15 +11,17 @@ export const createScan = async (req: Request, res: Response) => {
     const scan = new Scan({ urls, status: "pending" });
     await scan.save();
 
-    // Start the scanning process asynchronously
-    processScanInBackground((scan._id as string).toString());
+    const { id, createdAt, status } = scan;
 
-    res.status(200).json({
-      id: scan._id,
+    // Start the scanning process asynchronously
+    processScanInBackground(id.toString());
+
+    res.status(201).json({
+      id: id.toString(),
       message: "Scan initiated",
-      status: scan.status,
-      urls: scan.urls,
-      createdAt: scan.createdAt,
+      status: status,
+      urls: urls,
+      createdAt: createdAt.toISOString(),
     });
   } catch (error: any) {
     if (error.errors) {
@@ -32,7 +34,7 @@ export const createScan = async (req: Request, res: Response) => {
   }
 };
 
-async function processScanInBackground(scanId: string) {
+export async function processScanInBackground(scanId: string) {
   try {
     const scan = await Scan.findById(scanId);
     if (!scan) {
