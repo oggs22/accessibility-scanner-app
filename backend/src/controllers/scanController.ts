@@ -34,6 +34,46 @@ export const createScan = async (req: Request, res: Response) => {
   }
 };
 
+export const getScan = async (req: Request, res: Response) => {
+  try {
+    const scan = await Scan.findById(req.params.id);
+
+    if (!scan) {
+      return res.status(404).json({ error: "Scan not found" });
+    }
+
+    res.json(scan);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+export const getScanList = async (req: Request, res: Response) => {
+  try {
+    const scans = await Scan.find()
+      .sort({ createdAt: -1 })
+      .select("urls status createdAt updatedAt")
+      .limit(50);
+    res.json(scans);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+export const deleteScan = async (req: Request, res: Response) => {
+  try {
+    const scan = await Scan.findByIdAndDelete(req.params.id);
+
+    if (!scan) {
+      return res.status(404).json({ error: "Scan not found" });
+    }
+
+    res.json({ message: "Scan deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 export async function processScanInBackground(scanId: string) {
   try {
     const scan = await Scan.findById(scanId);
