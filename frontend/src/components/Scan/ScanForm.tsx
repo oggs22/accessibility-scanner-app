@@ -33,7 +33,7 @@ export const ScanForm = ({ onSubmit, loading }: ScanFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4" role='form'>
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           URLs to scan (one per line)
