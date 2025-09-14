@@ -9,7 +9,7 @@ html, body, #root {
   padding: 0;
 }
 
-#root {
+/* #root {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -17,4 +17,4 @@ html, body, #root {
 
 main {
   height: 79vh;
-}
+} */

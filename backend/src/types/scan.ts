@@ -20,7 +20,7 @@ export interface IScanResult {
 
 export interface IScan extends Document {
   urls: string[];
-  status: "pending" | "running" | "completed" | "error" | "completed_with_errors";
+  status: "pending" | "running" | "completed" | "error";
   results: IScanResult[];
   createdAt: Date;
   updatedAt: Date;

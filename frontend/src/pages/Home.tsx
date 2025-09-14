@@ -13,7 +13,7 @@ export const Home = () => {
             Scan your websites for accessibility issues
           </p>
           
-          <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+          <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center">
             <Link to="/new-scan">
               <Button size="lg" className="w-full sm:w-auto">
                 Start New Scan

@@ -26,7 +26,7 @@ const ScanSchema = new Schema({
   urls: [{ type: String, required: true }],
   status: {
     type: String,
-    enum: ['pending', 'running', 'completed', 'error', 'completed_with_errors'],
+    enum: ['pending', 'running', 'completed', 'error'],
     default: 'pending'
   },
   results: [ScanResultSchema],

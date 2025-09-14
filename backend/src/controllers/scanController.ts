@@ -17,7 +17,7 @@ export const createScan = async (req: Request, res: Response) => {
     processScanInBackground(id.toString());
 
     res.status(201).json({
-      id: id.toString(),
+      _id: id.toString(),
       message: "Scan initiated",
       status: status,
       urls: urls,
@@ -90,7 +90,7 @@ export async function processScanInBackground(scanId: string) {
     const hasErrors = results.some((result) => result.error);
 
     scan.results = results;
-    scan.status = hasErrors ? "completed_with_errors" : "completed";
+    scan.status = hasErrors ? "error" : "completed";
 
     const errors = results
       .filter((result) => result.error)

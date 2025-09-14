@@ -19,7 +19,7 @@ export interface ScanResult {
 export interface Scan {
   _id: string;
   urls: string[];
-  status: 'pending' | 'running' | 'completed' | 'completed_with_errors' | 'error';
+  status: 'pending' | 'running' | 'completed' | 'error';
   results: ScanResult[];
   createdAt: string;
   updatedAt: string;
