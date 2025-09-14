@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,8 +6,9 @@ import {
 } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { Home } from "./pages/Home";
+import { NewScan } from "./pages/NewScan";
 
-export const AppRouter: React.FC = () => {
+export const AppRouter = () => {
   return (
     <Router>
       <Layout>
@@ -18,6 +18,8 @@ export const AppRouter: React.FC = () => {
           <Route path="/home" element={<Home />} />
 
           <Route path="*" element={<Navigate to="/home" replace />} />
+
+          <Route path="/new-scan" element={<NewScan />} />
         </Routes>
       </Layout>
     </Router>

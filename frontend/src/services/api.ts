@@ -16,7 +16,7 @@ export const scanApi = {
     api.get(`/scan/${id}`).then(res => res.data),
 
   getScans: (): Promise<Scan[]> =>
-    api.get('/scan/list').then(res => res.data),
+    api.get('/scan-list').then(res => res.data),
 
   deleteScan: (id: string): Promise<void> =>
     api.delete(`/scan/${id}`),
