@@ -7,6 +7,7 @@ import {
 import { Layout } from "./components/Layout/Layout";
 import { Home } from "./pages/Home";
 import { NewScan } from "./pages/NewScan";
+import ScanList from "./pages/ScanList";
 
 export const AppRouter = () => {
   return (
@@ -20,6 +21,8 @@ export const AppRouter = () => {
           <Route path="*" element={<Navigate to="/home" replace />} />
 
           <Route path="/new-scan" element={<NewScan />} />
+
+          <Route path="/scans" element={<ScanList />} />
         </Routes>
       </Layout>
     </Router>
