@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { Scan } from '../../types/scan';
 import { Button } from '../UI/Button';
+import getFormatDate from '../../utils/getFormatDate';
 
 interface ScanCardProps {
   scan: Scan;
@@ -18,19 +19,6 @@ export const ScanCard = ({ scan, onDelete, deleting }: ScanCardProps) => {
     }
   };
 
-  const getDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; 
-  };
-
-  
-
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
       <div className="flex justify-between items-start mb-4">
@@ -41,7 +29,7 @@ export const ScanCard = ({ scan, onDelete, deleting }: ScanCardProps) => {
               {scan.status}
             </span>
             <span className="text-sm text-gray-500">
-              {getDate(scan.createdAt)}
+              {getFormatDate(scan.createdAt)}
             </span>
           </div>
         </div>

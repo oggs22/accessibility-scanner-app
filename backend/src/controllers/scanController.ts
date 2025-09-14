@@ -52,7 +52,6 @@ export const getScanList = async (req: Request, res: Response) => {
   try {
     const scans = await Scan.find()
       .sort({ createdAt: -1 })
-      .select("urls status createdAt updatedAt")
       .limit(50);
     res.json(scans);
   } catch (error) {
